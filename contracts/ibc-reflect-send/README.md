@@ -1,3 +1,30 @@
+# Compilation
+
+You will need Rust 1.44.1+ ~~with `wasm32-unknown-unknown` target installed.~~
+
+check rust version via 
+
+```
+rustc --version
+```
+
+install rustup: https://rustup.rs/
+
+add the target via `rustup target add wasm32-unknown-unknown` (source: https://github.com/rustwasm/book/issues/160)
+
+You can run unit tests on this via:
+
+`cargo test`
+
+Once you are happy with the content, you can compile it to wasm via:
+
+```
+RUSTFLAGS='-C link-arg=-s' cargo wasm
+cp target/wasm32-unknown-unknown/release/ibc_reflect_send.wasm .
+ls -l ibc_reflect_send.wasm
+sha256sum ibc_reflect_send.wasm
+```
+
 # Ibc Reflect Send Contract
 
 This is a simple contract to demonstrate using contracts using IBC messages. The
